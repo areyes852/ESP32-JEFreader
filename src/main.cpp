@@ -26,7 +26,6 @@
       ; // wait for serial port to connect. Needed for Leonardo only
     }
 
-
     Serial.print("Initializing SD card...");
     pinMode(SS, OUTPUT);
     /* cs  -> 26
@@ -43,13 +42,14 @@
     Serial.println("initialization done.");
     // open the file. note that only one file can be open at a time,
     // so you have to close this one before opening another.
-    myFile = SD.open("test.txt", FILE_WRITE);
+    myFile = SD.open("decomer.jef", FILE_READ);
 
     if (myFile) {
-      Serial.println("test.txt:");
+      Serial.println("**********************");
 
       // read from the file until there's nothing else in it:
       while (myFile.available()) {
+
       	Serial.write(myFile.read());
       }
       // close the file:
