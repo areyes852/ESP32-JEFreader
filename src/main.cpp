@@ -17,6 +17,15 @@
 
   File myFile;
 
+  void lerBytes(byte byteLido[],File archivo,int lonxitude)
+  {
+    int i = 0;
+    for(i = 0;i<lonxitude;i++)
+    {
+      byteLido[i]=archivo.read();
+    }
+  }
+
   void setup()
   {
    // Open serial communications and wait for port to open:
@@ -46,12 +55,37 @@
 
     if (myFile) {
       Serial.println("**********************");
+      byte stitchOffset[4];
+      lerBytes(stitchOffset,myFile,4);
+      byte flags[4];
+      lerBytes(flags,myFile,4);
+      byte fecha[8];
+      lerBytes[fecha,myFile,8];
+
+      int i = 0;
+      for (i=0;i<4;i++)
+      {
+          Serial.println(stitchOffset[i], HEX);
+      }
+      Serial.println("");
+
+      for (i=0;i<4;i++)
+      {
+          Serial.println(flags[i], HEX);
+      }
+      Serial.println("");
+
+      for (i=0;i<8;i++)
+      {
+          Serial.println(fecha[i], HEX);
+      }
+      Serial.println("");
 
       // read from the file until there's nothing else in it:
-      while (myFile.available()) {
-
-      	Serial.write(myFile.read());
-      }
+    //  while (myFile.available()) {
+     //
+    //   	Serial.write(myFile.read());
+    //   }
       // close the file:
       myFile.close();
     } else {
