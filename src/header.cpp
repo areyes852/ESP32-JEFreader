@@ -1,1 +1,0 @@
-/* Valores da cabeceira do archivo .jef*/
